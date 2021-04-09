@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Compare Text</title>
+  </head>
+  <body>
+      <header>are these strings the same?</header>
+    <div class="text-container">
+      <textarea id="t1" cols="30" rows="10"></textarea>
+      <textarea id="t2" cols="30" rows="10"></textarea>
+    </div>
+    <button>CHECK IF EQUAL</button>
+    <span id="message"></span>
+  </body>
+</html>
+
+<script>
+  const text1 = document.getElementById("t1");
+  const text2 = document.getElementById("t2");
+  const button = document.querySelector("button");
+
+  const message = document.getElementById("message");
+
+  const equalCheck = () => {
+    const str1 = text1.value;
+    const str2 = text2.value;
+
+    let result = str1.localeCompare(str2);
+
+    if (str1 == "" || str2 == "") return;
+
+    result === 0 ? (message.innerHTML = "TRUE") : (message.innerHTML = "FALSE");
+
+  };
+
+  button.addEventListener("click", equalCheck);
+</script>
