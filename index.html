@@ -25,8 +25,8 @@
   const message = document.getElementById("message");
 
   const equalCheck = () => {
-    const str1 = text1.value;
-    const str2 = text2.value;
+    const str1 = text1.value.trim();
+    const str2 = text2.value.trim();
 
     let result = str1.localeCompare(str2);
 
