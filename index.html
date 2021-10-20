@@ -8,7 +8,7 @@
     <title>Compare Text</title>
   </head>
   <body>
-      <header>are these strings the same?</header>
+    <header>are these strings the same?</header>
     <div class="text-container">
       <textarea id="t1" cols="30" rows="10"></textarea>
       <textarea id="t2" cols="30" rows="10"></textarea>
@@ -23,17 +23,31 @@
   const text2 = document.getElementById("t2");
   const button = document.querySelector("button");
   const message = document.getElementById("message");
+  const select = document.querySelector("select");
+
+  const setTextResult = (result) => {
+    if (result == 0) {
+      message.innerHTML = "MATCH";
+      message.classList.add("isEqual");
+      message.classList.remove("isNotEqual");
+    } else if (result > 0 || result < 0) {
+      message.innerHTML = "NOT MATCH";
+      message.classList.add("isNotEqual");
+      message.classList.remove("isEqual");
+    }
+  };
 
   const equalCheck = () => {
-    const str1 = text1.value.trim();
-    const str2 = text2.value.trim();
-
-    let result = str1.localeCompare(str2);
+    let str1 = text1.value.replace(/\s/g, "");
+    let str2 = text2.value.replace(/\s/g, "");
 
     if (str1 == "" || str2 == "") return;
 
-    result === 0 ? (message.innerHTML = "TRUE") : (message.innerHTML = "FALSE");
+    console.log("FRASE LEFT: " + str1);
+    console.log("FRASE RIGHT: " + str2);
 
+    let result = str1.localeCompare(str2);
+    setTextResult(result);
   };
 
   button.addEventListener("click", equalCheck);
