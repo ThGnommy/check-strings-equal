@@ -75,6 +75,10 @@ button:active {
   transform: scale(0.98);
 }
 
+button.reset {
+  background-color: darkred;
+}
+
 #message {
   text-align: center;
   font-size: 2rem;
